@@ -166,7 +166,7 @@ class Badge {
 			{
 				foreach ( $positions as $position )
 				{
-					$index = substr( $color, 0, 1 ) . substr( $positions, 0, 1 ) . $x;
+					$index = substr( $color, 0, 1 ) . substr( $position, 0, 1 ) . $x;
 					$badge = new Badge;
 					$badge
 						->setName( $index )

@@ -1,10 +1,10 @@
 <?php
 
 /** @var \BernBadge\Badge[] $bern_badges */
-$bern_badges = $this->get_bern_badges;
+$bern_badges = $this->get_bern_badges();
 
 /** @var \BernBadge\BAdge $badge */
-$badge = $this->get_bern_badge;
+$badge = $this->get_bern_badge();
 
 ?>
 
