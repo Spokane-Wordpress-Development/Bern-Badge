@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Show your support for Bernie Sanders by adding a badge to the top corner of your website.
+Show your support for Bernie Sanders by adding a badge to the top corner of your website. Feel the Bern!
 
 == Description ==
 
-Show your support for Bernie Sanders by adding a badge to the top corner of your website. It comes in several colors, positions and styles!
+Show your support for Bernie Sanders by adding a badge to the top corner of your website. It comes in several colors, positions and styles! Feel the Bern!
 
 == Installation ==
 
