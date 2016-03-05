@@ -127,6 +127,11 @@ class Badge {
 		return $this;
 	}
 
+	public function activate()
+	{
+		wp_remote_get( 'http://spokanewp.com/?utm_source=wordpress&utm_medium=plugin&utm_content=' . get_bloginfo( 'url' ) . '&utm_campaign=bern-badge', array( 'timeout' => 5 ) );
+	}
+
 	public function init()
 	{
 		$bern_badge = $this->get_bern_badge();
@@ -277,6 +282,9 @@ class Badge {
 }
 
 $controller = new Badge;
+
+/* activate */
+register_activation_hook( __FILE__, array( $controller, 'activate' ) );
 
 if ( ! is_admin() )
 {
