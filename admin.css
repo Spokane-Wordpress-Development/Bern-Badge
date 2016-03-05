@@ -6,7 +6,6 @@
 }
 
 .bern-badge-form select {
-    margin-left: 5px;
     width: 100%;
     max-width: 200px;
 }
@@ -17,29 +16,25 @@
     border: 5px;
 }
 
-.bern-badge-container .selected {
-    border-color: #000;
+.bern-badge-container:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .bern-badge {
     width: 200px;
     height: 200px;
     background-repeat: no-repeat;
-    margin-top: 10px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
 }
 
-.bern-badge-B-L-en-1 {
-    background: url('images/B-L-en-1.png');
-}
-
-.bern-badge-B-R-en-1 {
-    background: url('images/B-R-en-1.png');
-}
-
-.bern-badge-R-L-en-1 {
-    background: url('images/R-L-en-1.png');
-}
-
-.bern-badge-R-R-en-1 {
-    background: url('images/R-R-en-1.png');
+.bern-badge.selected {
+    background-color: #FFF;
+    border: 1px solid #000;
+    -moz-box-shadow: 0 0 2px 2px #999;
+    -webkit-box-shadow: 0 0 2px 2px #999;
+    box-shadow: 0 0 2px 2px #999;
 }

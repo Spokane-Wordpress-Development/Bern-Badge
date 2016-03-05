@@ -34,30 +34,25 @@ class Badge {
 	const VERSION = '1.0.0';
 	const VERSION_CSS = '1.0.0';
 	const VERSION_JS = '1.0.0';
-	const STYLES = 1;
+	const DEFAULT_BADGE = 'bern-badge-left-blue-en-6';
 
-	private $name;
 	private $color;
 	private $position;
 	private $language;
 	private $style;
 
+	/** @var Badge[] $bern_badges */
+	private $bern_badges;
+
 	/**
 	 * @return mixed
 	 */
 	public function getName() {
-		return $this->name;
+		return 'bern-badge-' . $this->position . '-' . $this->color . '-' . $this->language . '-' . $this->style;
 	}
 
-	/**
-	 * @param mixed $name
-	 *
-	 * @return Badge
-	 */
-	public function setName( $name ) {
-		$this->name = $name;
-
-		return $this;
+	public function getFileName() {
+		return plugin_dir_url( __FILE__ ) . 'images/' . $this->getName() . '.png';
 	}
 
 	/**
@@ -138,7 +133,7 @@ class Badge {
 
 		wp_enqueue_script( 'bern-badge-js', plugin_dir_url( __FILE__ ) . 'bern-badge.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
 		wp_localize_script( 'bern-badge-js', 'bern_badge', array(
-			'class' => $bern_badge->getName(),
+			'image' => $bern_badge->getFileName(),
 			'color' => $bern_badge->getColor(),
 			'position' => $bern_badge->getPosition(),
 			'admin_bar' => ( is_admin_bar_showing() ) ? 1 : 0
@@ -191,8 +186,9 @@ class Badge {
 	public function get_colors()
 	{
 		return array(
-			'B' => __( 'Blue', 'bern-badge' ),
-			'R' => __( 'Red', 'bern-badge' )
+			'blue' => __( 'Blue', 'bern-badge' ),
+			'white' => __( 'White', 'bern-badge' ),
+			'black' => __( 'Black', 'bern-badge' )
 		);
 	}
 
@@ -202,8 +198,8 @@ class Badge {
 	public function get_positions()
 	{
 		return array(
-			'L' => __( 'Left', 'bern-badge'),
-			'R' => __( 'Right', 'bern-badge' )
+			'left' => __( 'Left', 'bern-badge'),
+			'right' => __( 'Right', 'bern-badge' )
 		);
 	}
 
@@ -222,34 +218,39 @@ class Badge {
 	 */
 	public function get_bern_badges()
 	{
-		$colors = $this->get_colors();
-		$positions = $this->get_positions();
-		$languages = $this->get_languages();
-
-		$bern_badges = array();
-		for ( $x=1; $x<=self::STYLES; $x++ )
+		if ( $this->bern_badges === NULL )
 		{
-			foreach ( $colors as $ci => $color )
+			$colors = $this->get_colors();
+			$positions = $this->get_positions();
+			$languages = $this->get_languages();
+
+			$this->bern_badges = array();
+
+			$dir = opendir( __DIR__ . '/images' );
+			while( $file = readdir( $dir ) )
 			{
-				foreach ( $positions as $pi => $position )
+				$parts = explode( '.', $file );
+				if ( count( $parts ) == 2 && $parts[1] == 'png' )
 				{
-					foreach ( $languages as $abbr => $language )
+					$parts = explode( '-', $parts[0] );
+					if ( count( $parts ) == 6 && $parts[0] == 'bern' && $parts[1] == 'badge' )
 					{
-						$index = $ci . '-' . $pi . '-' . $abbr . '-' . $x;
-						$badge = new Badge;
-						$badge
-							->setName( $index )
-							->setColor( $ci )
-							->setPosition( $pi )
-							->setLanguage( $abbr )
-							->setStyle( $x );
-						$bern_badges[ $badge->getName() ] = $badge;
+						if ( array_key_exists( $parts[2], $positions ) && array_key_exists( $parts[3], $colors ) && array_key_exists( $parts[4], $languages ) )
+						{
+							$bern_badge = new Badge;
+							$bern_badge
+								->setPosition( $parts[2] )
+								->setColor( $parts[3] )
+								->setLanguage( $parts[4] )
+								->setStyle( $parts[5] );
+							$this->bern_badges[ $bern_badge->getName() ] = $bern_badge;
+						}
 					}
 				}
 			}
 		}
 
-		return $bern_badges;
+		return $this->bern_badges;
 	}
 
 	/**
@@ -264,20 +265,8 @@ class Badge {
 		{
 			return $bern_badges[ $bern_badge ];
 		}
-		else
-		{
-			foreach ( $bern_badges as $bern_badge )
-			{
-				return $bern_badge;
-			}
-		}
 
-		/**
-		 * This statement will never be reached,
-		 * but Storm wanted me to return something
-		 * because it doesn't know that $bern_badges cannot be empty
-		 */
-		return FALSE;
+		return $bern_badges[ self::DEFAULT_BADGE ];
 	}
 }
 

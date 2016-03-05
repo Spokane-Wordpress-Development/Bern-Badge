@@ -25,57 +25,67 @@ $my_badge = $this->get_bern_badge();
 
 		<input type="hidden" name="bern_badge" id="bern_badge" value="<?php echo esc_attr( $my_badge->getName() ); ?>">
 
-		<label for="bern-badge-color">
-			<?php _e( 'Color', 'bern-badge' ); ?>:
-		</label>
-		<select id="bern-badge-color">
-			<?php foreach ( $this->get_colors() as $index => $color ) { ?>
-				<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getColor() ) { ?> selected<?php } ?>>
-					<?php echo $color; ?>
-				</option>
-			<?php } ?>
-		</select>
+		<table class="form-table">
+			<tr>
+				<td>
+					<label for="bern-badge-position">
+						<?php _e( 'Position', 'bern-badge' ); ?>:
+					</label>
+					<select id="bern-badge-position">
+						<?php foreach ( $this->get_positions() as $index => $position ) { ?>
+							<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getPosition() ) { ?> selected<?php } ?>>
+								<?php echo $position; ?>
+							</option>
+						<?php } ?>
+					</select>
+				</td>
+				<td>
+					<label for="bern-badge-color">
+						<?php _e( 'Color', 'bern-badge' ); ?>:
+					</label>
+					<select id="bern-badge-color">
+						<?php foreach ( $this->get_colors() as $index => $color ) { ?>
+							<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getColor() ) { ?> selected<?php } ?>>
+								<?php echo $color; ?>
+							</option>
+						<?php } ?>
+					</select>
+				</td>
+				<td>
+					<label for="bern-badge-language">
+						<?php _e( 'Language', 'bern-badge' ); ?>:
+					</label>
+					<select id="bern-badge-language">
+						<?php foreach ( $this->get_languages() as $index => $language ) { ?>
+							<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getLanguage() ) { ?> selected<?php } ?>>
+								<?php echo $language; ?>
+							</option>
+						<?php } ?>
+					</select>
+				</td>
+			</tr><tr>
+				<td colspan="3">
+					<label for="bern-badge-language">
+						<?php _e( 'Badges (click to choose)', 'bern-badge'); ?>:
+					</label>
+					<div class="bern-badge-container">
 
-		<label for="bern-badge-position">
-			<?php _e( 'Position', 'bern-badge' ); ?>:
-		</label>
-		<select id="bern-badge-position">
-			<?php foreach ( $this->get_positions() as $index => $position ) { ?>
-				<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getPosition() ) { ?> selected<?php } ?>>
-					<?php echo $position; ?>
-				</option>
-			<?php } ?>
-		</select>
+						<?php foreach ( $bern_badges as $bern_badge ) { ?>
 
-		<label for="bern-badge-language">
-			<?php _e( 'Language', 'bern-badge' ); ?>:
-		</label>
-		<select id="bern-badge-language">
-			<?php foreach ( $this->get_languages() as $index => $language ) { ?>
-				<option value="<?php echo $index; ?>"<?php if ( $index == $my_badge->getLanguage() ) { ?> selected<?php } ?>>
-					<?php echo $language; ?>
-				</option>
-			<?php } ?>
-		</select>
+							<div
+								class="bern-badge<?php if ( $my_badge->getName() == $bern_badge->getName() ) { ?> selected<?php } ?>"
+								data-position="<?php echo $bern_badge->getPosition(); ?>"
+								data-color="<?php echo $bern_badge->getColor(); ?>"
+								data-language="<?php echo $bern_badge->getLanguage(); ?>"
+								data-name="<?php echo $bern_badge->getName(); ?>"
+								style="background-image:url(<?php echo $bern_badge->getFileName(); ?>)"></div>
 
-		<label for="bern-badge-style">
-			<?php _e( 'Style', 'bern-badge' ); ?>:
-		</label>
-		<select id="bern-badge-style">
-			<?php for ( $x=1; $x<=\BernBadge\Badge::STYLES; $x++ ) { ?>
-				<option value="<?php echo $x; ?>"<?php if ( $x == $my_badge->getStyle() ) { ?> selected<?php } ?>>
-					<?php echo $x; ?>
-				</option>
-			<?php } ?>
-		</select>
+						<?php } ?>
 
-		<label for="bern-badge-language">
-			Bern Badge:
-		</label>
-
-		<div class="bern-badge" id="my-bern-badge" data-current-class=""></div>
-
-		<?php submit_button(); ?>
+					</div>
+				</td>
+			</tr>
+		</table>
 
 	</form>
 

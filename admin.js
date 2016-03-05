@@ -6,28 +6,25 @@
 
     toggleBernBadges();
 
+    $('.bern-badge').click(function(){
+        $('#bern_badge').val($(this).data('name'));
+        $('.bern-badge-form').submit();
+    });
+
 })(jQuery);
 
 function toggleBernBadges(){
 
     jQuery('.bern-badge').each(function(){
 
-        var my_bern_badge = jQuery('#my-bern-badge');
-        var current_class = my_bern_badge.data('current-class');
         var color = jQuery('#bern-badge-color').val();
         var position = jQuery('#bern-badge-position').val();
         var language = jQuery('#bern-badge-language').val();
-        var style = jQuery('#bern-badge-style').val();
 
-        if (current_class.length > 0){
-            my_bern_badge.removeClass(current_class);
+        if (color == jQuery(this).data('color') && position == jQuery(this).data('position') && language == jQuery(this).data('language')) {
+            jQuery(this).show();
+        } else {
+            jQuery(this).hide()
         }
-
-        var name = color+'-'+position+'-'+language+'-'+style;
-        jQuery('#bern_badge').val(name);
-        var new_class = 'bern-badge-'+name;
-        my_bern_badge
-            .addClass(new_class)
-            .data('current-class', new_class);
     });
 }
