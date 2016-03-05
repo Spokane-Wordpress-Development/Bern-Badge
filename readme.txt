@@ -12,17 +12,21 @@ Show your support for Bernie Sanders by adding a badge to the top corner of your
 
 == Description ==
 
-Show your support for Bernie Sanders by adding a badge to the top corner of your website. It comes in several colors and styles!
+Show your support for Bernie Sanders by adding a badge to the top corner of your website. It comes in several colors, positions and styles!
 
 == Installation ==
 
-Activate the plugin and then visit the settings page to choose a color, style and position for your Bern Badge.
+Activate the plugin and then visit the settings page to choose a color, position and style for your Bern Badge.
 
 == Frequently Asked Questions ==
 
 = What are you feeling? =
 
-The bern.
+The bern, baby. I'm feelin' the bern.
+
+= Do you offer badges in different languages? =
+
+Not yet. But if you speak another language and are willing to help translate them, please contact us!
 
 == Upgrade Notice ==
 
@@ -35,4 +39,4 @@ This is a first release.
 == Changelog ==
 
 = 1.0.0 =
-* We made this.
+* Feel the Bern.
