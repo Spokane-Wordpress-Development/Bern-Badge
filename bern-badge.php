@@ -131,14 +131,20 @@ class Badge {
 	{
 		$bern_badge = $this->get_bern_badge();
 
+		wp_enqueue_script( 'bern-badge-js-cookie', plugin_dir_url( __FILE__ ) . 'js.cookie.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
 		wp_enqueue_script( 'bern-badge-js', plugin_dir_url( __FILE__ ) . 'bern-badge.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
 		wp_localize_script( 'bern-badge-js', 'bern_badge', array(
 			'image' => $bern_badge->getFileName(),
 			'color' => $bern_badge->getColor(),
 			'position' => $bern_badge->getPosition(),
-			'admin_bar' => ( is_admin_bar_showing() ) ? 1 : 0
+			'admin_bar' => ( is_admin_bar_showing() ) ? 1 : 0,
+			'action1' => __( 'Visit BernieSanders.com', 'bern-badge' ),
+			'action2' => __( 'Donate to Bernie Sanders', 'bern-badge' ),
+			'action3' => __( 'Add this badge to Your website', 'bern-badge' ),
+			'action4' => __( 'Hide this badge temporarily', 'bern-badge' )
 		) );
 		wp_enqueue_style( 'bern-badge-css', plugin_dir_url( __FILE__ ) . 'bern-badge.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
+		wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' );
 	}
 
 	public function admin_init()
