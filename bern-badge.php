@@ -8,6 +8,7 @@
 * Author URI: http://www.spokanewp.com
 * Version: 1.1.0
 * Text Domain: bern-badge
+* Domain Path: /languages
 *
 * Copyright 2016 Spokane WordPress Development
 *
@@ -33,10 +34,12 @@ class Badge {
 	const VERSION = '1.0.0';
 	const VERSION_CSS = '1.0.0';
 	const VERSION_JS = '1.0.0';
+	const STYLES = 1;
 
 	private $name;
 	private $color;
 	private $position;
+	private $language;
 	private $style;
 
 	/**
@@ -96,6 +99,24 @@ class Badge {
 	/**
 	 * @return mixed
 	 */
+	public function getLanguage() {
+		return $this->language;
+	}
+
+	/**
+	 * @param mixed $language
+	 *
+	 * @return Badge
+	 */
+	public function setLanguage( $language ) {
+		$this->language = $language;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
 	public function getStyle() {
 		return $this->style;
 	}
@@ -115,6 +136,12 @@ class Badge {
 	{
 		wp_enqueue_script( 'bern-badge-js', plugin_dir_url( __FILE__ ) . 'bern-badge.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
 		wp_enqueue_style( 'bern-badge-css', plugin_dir_url( __FILE__ ) . 'bern-badge.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
+	}
+
+	public function admin_init()
+	{
+		wp_enqueue_script( 'bern-badge-admin-js', plugin_dir_url( __FILE__ ) . 'admin.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
+		wp_enqueue_style( 'bern-badge-admin-css', plugin_dir_url( __FILE__ ) . 'admin.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
 	}
 
 	public function register_settings()
@@ -151,29 +178,65 @@ class Badge {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function get_colors()
+	{
+		return array(
+			'B' => __( 'Blue', 'bern-badge' ),
+			'R' => __( 'Red', 'bern-badge' )
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function get_positions()
+	{
+		return array(
+			'L' => __( 'Left', 'bern-badge'),
+			'R' => __( 'Right', 'bern-badge' )
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function get_languages()
+	{
+		return array(
+			'en' => __( 'English', 'bern-badge' )
+		);
+	}
+
+	/**
 	 * @return Badge[]
 	 */
 	public function get_bern_badges()
 	{
-		$colors = array( 'Blue', 'Red' );
-		$positions = array( 'Left', 'Right' );
-		$styles = 4;
+		$colors = $this->get_colors();
+		$positions = $this->get_positions();
+		$languages = $this->get_languages();
 
 		$bern_badges = array();
-		for ( $x=1; $x<=$styles; $x++ )
+		for ( $x=1; $x<=self::STYLES; $x++ )
 		{
-			foreach ( $colors as $color )
+			foreach ( $colors as $ci => $color )
 			{
-				foreach ( $positions as $position )
+				foreach ( $positions as $pi => $position )
 				{
-					$index = substr( $color, 0, 1 ) . substr( $position, 0, 1 ) . $x;
-					$badge = new Badge;
-					$badge
-						->setName( $index )
-						->setColor( $color )
-						->setPosition( $position )
-						->setStyle( $x );
-					$bern_badges[ $badge->getName() ] = $badge;
+					foreach ( $languages as $abbr => $language )
+					{
+						$index = $ci . '-' . $pi . '-' . $abbr . '-' . $x;
+						$badge = new Badge;
+						$badge
+							->setName( $index )
+							->setColor( $ci )
+							->setPosition( $pi )
+							->setLanguage( $abbr )
+							->setStyle( $x );
+						$bern_badges[ $badge->getName() ] = $badge;
+					}
 				}
 			}
 		}
@@ -201,7 +264,11 @@ class Badge {
 			}
 		}
 
-		/* This statement will never be reached, but Storm wanted me to return something because it doesn't know that $bern_badges cannot be empty */
+		/**
+		 * This statement will never be reached,
+		 * but Storm wanted me to return something
+		 * because it doesn't know that $bern_badges cannot be empty
+		 */
 		return FALSE;
 	}
 }
@@ -215,6 +282,9 @@ if ( ! is_admin() )
 }
 else
 {
+	/* enqueue js and css */
+	add_action( 'init', array( $controller, 'admin_init' ) );
+
 	/* register settings */
 	add_action( 'admin_init', array( $controller, 'register_settings' ) );
 
