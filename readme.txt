@@ -34,7 +34,8 @@ This is a first release.
 
 == Screenshots ==
 
-1. /assets/screenshot-1.png
+1. Many styles to choose from
+2. Several colors to choose from
 
 == Changelog ==
 
