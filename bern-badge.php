@@ -134,7 +134,15 @@ class Badge {
 
 	public function init()
 	{
+		$bern_badge = $this->get_bern_badge();
+
 		wp_enqueue_script( 'bern-badge-js', plugin_dir_url( __FILE__ ) . 'bern-badge.js', array( 'jquery' ), (WP_DEBUG) ? time() : self::VERSION_JS, TRUE );
+		wp_localize_script( 'bern-badge-js', 'bern_badge', array(
+			'class' => $bern_badge->getName(),
+			'color' => $bern_badge->getColor(),
+			'position' => $bern_badge->getPosition(),
+			'admin_bar' => ( is_admin_bar_showing() ) ? 1 : 0
+		) );
 		wp_enqueue_style( 'bern-badge-css', plugin_dir_url( __FILE__ ) . 'bern-badge.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
 	}
 
@@ -245,7 +253,7 @@ class Badge {
 	}
 
 	/**
-	 * @return Badge[]
+	 * @return Badge
 	 */
 	public function get_bern_badge()
 	{

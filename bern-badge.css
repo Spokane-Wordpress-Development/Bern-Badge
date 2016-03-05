@@ -1,0 +1,32 @@
+.bern-badge {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+.bern-badge-pop-down {
+    top: 32px;
+}
+
+.bern-badge-position-R {
+    right: 0;
+}
+
+.bern-badge-B-L-en-1 {
+    background: url('images/B-L-en-1.png');
+}
+
+.bern-badge-B-R-en-1 {
+    background: url('images/B-R-en-1.png');
+}
+
+.bern-badge-R-L-en-1 {
+    background: url('images/R-L-en-1.png');
+}
+
+.bern-badge-R-R-en-1 {
+    background: url('images/R-R-en-1.png');
+}
