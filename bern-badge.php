@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Plugin Name: Bern Badge
+* Plugin Name: Bernie Sanders Bern Badge
 * Plugin URI: https://www.spokanewp.com/portfolio
 * Description: Show your support for Bernie Sanders by adding a badge to the top corner of your website.
 * Author: Spokane WordPress Development

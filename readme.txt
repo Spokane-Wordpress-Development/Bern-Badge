@@ -1,4 +1,4 @@
-=== Bern Badge ===
+=== Bernie Sanders Bern Badge ===
 Contributors: spokanetony, Theaitch406
 Donate link: https://www.paypal.me/SpokaneTony
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
