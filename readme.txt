@@ -1,4 +1,4 @@
-=== Bernie Sanders Bern Badge ===
+=== Bern Badge for Bernie Sanders ===
 Contributors: spokanetony, Theaitch406
 Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
