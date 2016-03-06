@@ -53,6 +53,7 @@ $my_badge = $this->get_bern_badge();
 				</td>
 				<td>
 					<label for="bern-badge-language">
+						<span style="color:red;">**</span>
 						<?php _e( 'Language', 'bern-badge' ); ?>:
 					</label>
 					<select id="bern-badge-language">
@@ -88,5 +89,11 @@ $my_badge = $this->get_bern_badge();
 		</table>
 
 	</form>
+
+	<p>
+		<span style="color:red;">**</span>
+		<?php _e( 'If you would like to help us translate this plugin, please', 'bern-badge' ); ?>
+		<a href="http://spokanewp.com" target="_blank"><?php _e( 'contact us', 'bern-bage' ); ?></a>!
+	</p>
 
 </div>
