@@ -4,7 +4,7 @@ Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
 Requires at least: 3.0.1
 Tested up to: 4.4.2
-Stable tag: 1.0.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,3 +41,7 @@ This is a first release.
 
 = 1.0.0 =
 * Feel the Bern.
+
+= 1.1.1 =
+* Typo. Oops.
+* Also I accidentally tagged my version wrong, so I'm jumping to 1.1.1 to get everything on the same page. Oops X 2.
