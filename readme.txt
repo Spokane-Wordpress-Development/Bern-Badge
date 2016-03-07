@@ -1,5 +1,5 @@
 === Bern Badge for Bernie Sanders ===
-Contributors: spokanetony, Theaitch406
+Contributors: spokanetony, theaitch406
 Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
 Requires at least: 3.0.1
