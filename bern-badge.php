@@ -6,7 +6,7 @@
 * Description: Show your support for Bernie Sanders by adding a badge to the top corner of your website.
 * Author: Spokane WordPress Development
 * Author URI: http://www.spokanewp.com
-* Version: 1.1.3
+* Version: 1.1.4
 * Text Domain: bern-badge
 * Domain Path: /languages
 *
@@ -31,7 +31,7 @@ namespace BernBadge;
 
 class Badge {
 
-	const VERSION = '1.1.3';
+	const VERSION = '1.1.4';
 	const VERSION_CSS = '1.1.3';
 	const VERSION_JS = '1.1.3';
 	const DEFAULT_BADGE = 'bern-badge-right-blue-en-6';
