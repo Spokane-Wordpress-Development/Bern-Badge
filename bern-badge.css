@@ -35,19 +35,20 @@
 }
 
 .bernie-head {
-    width: 33%;
-    float: left;
+    width: 40%;
+    float: right;
 }
 
 .bernie {
     width: 194px;
     height: 150px;
     background-image: url('images/bernie.png');
+    margin: 10px;
 }
 
 .bernie-says {
-    width: 67%;
-    float: left;
+    width: 60%;
+    float: right;
     font-family: Merriweather,Georgia,serif;
     font-size: 16px;
     display: inline-block;
@@ -84,20 +85,11 @@
 
 @media screen and (max-width: 600px) {
 
-    .bernie-header,
+    .bernie-head,
     .bernie-says {
-        width: 100%;
-        text-align: left;
-    }
-
-    .bernie {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .bernie-says span {
+        float: none;
         display: block;
-        text-align: left;
+        width: 100%;
     }
 
     .bern-badge-info {

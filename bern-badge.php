@@ -1,12 +1,12 @@
 <?php
 
 /**
-* Plugin Name: Bern Badge for Bernie Sanders
+* Plugin Name: Feel the Bern Badge for Bernie Sanders
 * Plugin URI: https://www.spokanewp.com/portfolio
 * Description: Show your support for Bernie Sanders by adding a badge to the top corner of your website.
 * Author: Spokane WordPress Development
 * Author URI: http://www.spokanewp.com
-* Version: 1.1.2
+* Version: 1.1.3
 * Text Domain: bern-badge
 * Domain Path: /languages
 *
@@ -31,10 +31,10 @@ namespace BernBadge;
 
 class Badge {
 
-	const VERSION = '1.1.2';
-	const VERSION_CSS = '1.1.1';
-	const VERSION_JS = '1.1.1';
-	const DEFAULT_BADGE = 'bern-badge-left-blue-en-6';
+	const VERSION = '1.1.3';
+	const VERSION_CSS = '1.1.3';
+	const VERSION_JS = '1.1.3';
+	const DEFAULT_BADGE = 'bern-badge-right-blue-en-6';
 
 	private $color;
 	private $position;
@@ -148,6 +148,8 @@ class Badge {
 			'action3' => __( 'Add this badge to your website', 'bern-badge' ),
 			'action4' => __( 'Hide badge just for this page', 'bern-badge' ),
 			'action5' => __( 'Hide badge for entire website', 'bern-badge' ),
+			'action6' => __( 'Bern Badge admin settings', 'bern-badge' ),
+			'link' => '/wp-admin/options-general.php?page=' . plugin_basename( __FILE__ ),
 			'confirm' => __( 'Are you sure you want to remove this badge from the entire website for the duration of your visit?', 'bern-badge' )
 		) );
 		wp_enqueue_style( 'bern-badge-css', plugin_dir_url( __FILE__ ) . 'bern-badge.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );

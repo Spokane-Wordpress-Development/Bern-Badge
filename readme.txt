@@ -1,10 +1,10 @@
-=== Bern Badge for Bernie Sanders ===
+=== Feel the Bern Badge for Bernie Sanders ===
 Contributors: spokanetony, theaitch406
 Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
 Requires at least: 3.0.1
 Tested up to: 4.4.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,3 +48,8 @@ This is a first release.
 
 = 1.1.2 =
 * Fixed Andreah's username so it shows up correctly on WP (I guess their usernames are case-sensitive?)
+
+= 1.1.3 =
+* Made the default badge go on the right side of the screen instead of the left
+* Added a link to admin settings on the pop-up if user is logged in
+* Added "Feel the Bern" to the title for better search placement
