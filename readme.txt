@@ -3,7 +3,7 @@ Contributors: spokanetony, theaitch406
 Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
 Requires at least: 3.0.1
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
