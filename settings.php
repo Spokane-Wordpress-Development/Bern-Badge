@@ -1,5 +1,7 @@
 <?php
 
+/** @var \BernBadge\Badge $this */
+
 /** @var \BernBadge\Badge[] $bern_badges */
 $bern_badges = $this->get_bern_badges();
 
@@ -24,6 +26,21 @@ $my_badge = $this->get_bern_badge();
 		?>
 
 		<input type="hidden" name="bern_badge" id="bern_badge" value="<?php echo esc_attr( $my_badge->getName() ); ?>">
+
+		<p>
+			<label for="bern-badge-hide">
+				<?php _e( 'Hide on Mobile', 'bern-badge' ); ?>:
+			</label>
+			<select id="bern-badge-hide" name="bern_badge_is_hidden_on_mobile">
+				<option value="N">
+					<?php _e( 'No', 'bern-badge' ); ?>
+				</option>
+				<option value="Y"<?php if ( $this->isHiddenOnMobile() ) { ?> selected<?php } ?>>
+					<?php _e( 'Yes', 'bern-badge' ); ?>
+				</option>
+			</select>
+			<?php submit_button(); ?>
+		</p>
 
 		<table class="form-table">
 			<tr>
@@ -64,7 +81,8 @@ $my_badge = $this->get_bern_badge();
 						<?php } ?>
 					</select>
 				</td>
-			</tr><tr>
+			</tr>
+			<tr>
 				<td colspan="3">
 					<label for="bern-badge-language">
 						<?php _e( 'Badges (click to choose)', 'bern-badge'); ?>:

@@ -6,7 +6,7 @@
 * Description: Show your support for Bernie Sanders by adding a badge to the top corner of your website.
 * Author: Spokane WordPress Development
 * Author URI: http://www.spokanewp.com
-* Version: 1.1.4
+* Version: 1.1.5
 * Text Domain: bern-badge
 * Domain Path: /languages
 *
@@ -31,8 +31,8 @@ namespace BernBadge;
 
 class Badge {
 
-	const VERSION = '1.1.4';
-	const VERSION_CSS = '1.1.3';
+	const VERSION = '1.1.5';
+	const VERSION_CSS = '1.1.5';
 	const VERSION_JS = '1.1.3';
 	const DEFAULT_BADGE = 'bern-badge-right-blue-en-6';
 
@@ -53,6 +53,15 @@ class Badge {
 
 	public function getFileName() {
 		return plugin_dir_url( __FILE__ ) . 'images/' . $this->getName() . '.png';
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isHiddenOnMobile()
+	{
+		$hidden = get_option( 'bern_badge_is_hidden_on_mobile', 'N' );
+		return ( $hidden == 'Y' );
 	}
 
 	/**
@@ -153,6 +162,10 @@ class Badge {
 			'confirm' => __( 'Are you sure you want to remove this badge from the entire website for the duration of your visit?', 'bern-badge' )
 		) );
 		wp_enqueue_style( 'bern-badge-css', plugin_dir_url( __FILE__ ) . 'bern-badge.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
+		if ( $this->isHiddenOnMobile() )
+		{
+			wp_enqueue_style( 'bern-badge-hidden-css', plugin_dir_url( __FILE__ ) . 'bern-badge-hidden-on-mobile.css', array(), (WP_DEBUG) ? time() : self::VERSION_CSS );
+		}
 		wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' );
 	}
 
@@ -165,6 +178,7 @@ class Badge {
 	public function register_settings()
 	{
 		register_setting( 'bern_badge_settings', 'bern_badge' );
+		register_setting( 'bern_badge_settings', 'bern_badge_is_hidden_on_mobile' );
 	}
 
 	/**

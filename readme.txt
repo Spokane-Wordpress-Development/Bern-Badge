@@ -4,7 +4,7 @@ Donate link: https://secure.actblue.com/contribute/page/lets-go-bernie
 Tags: bernie, bernie sanders, feel the bern, bern, bern badge
 Requires at least: 3.0.1
 Tested up to: 4.5.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,8 @@ Show your support for Bernie Sanders by adding a badge to the top corner of your
 == Installation ==
 
 Activate the plugin and then visit the settings page to choose a color, position and style for your Bern Badge.
+
+You can also turn off the badge on mobile devices from the settings page.
 
 == Frequently Asked Questions ==
 
@@ -56,3 +58,6 @@ This is a first release.
 
 = 1.1.4 =
 * Getting plugin ready for translation / localization (assuming that anyone wants to help translate!)
+
+= 1.1.5 =
+* Added an option to hide the badge on mobile
